@@ -4,11 +4,12 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
 const cors = require('cors');
+// const authMiddleware = require('./middleware/authMiddleware');
 
 // Middleware
 app.use(express.json());  // Untuk parsing JSON
 app.use(cors());          // Mengaktifkan CORS (agar bisa all platform)
-
+// app.use(authMiddleware);
 
 app.get("/", (req, res) => {
   res.send("tes")
@@ -19,6 +20,9 @@ app.use('/cars', carController);
 
 const paymentController = require('./payment/payment.controller');
 app.use('/payments', paymentController);
+
+const userController = require('./user/user.controller');
+app.use('/users', userController);
 
 // untuk error handling
 // app.use((err, req, res, next) => {
