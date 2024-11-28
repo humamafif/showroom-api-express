@@ -25,21 +25,21 @@ const userController = require('./user/user.controller');
 app.use('/users', userController);
 
 // untuk error handling
-// app.use((err, req, res, next) => {
-//   let statusCode = 500;
-//   let message = "Internal Server Error";
+app.use((err, req, res, next) => {
+  let statusCode = 500;
+  let message = "Internal Server Error";
 
-//   if (err.message === "Car not found" || err.message === "Brand not found" || err.message === "Payment not found" || err.message === "Type not found") {
-//     statusCode = 404;
-//     message = err.message;
-//   } else if (err.message === "Inavlid ID") {
-//     statusCode = 400;
-//     message = err.message;
-//   }
+  if (err.message === "Car not found" || err.message === "Brand not found" || err.message === "Payment not found" || err.message === "Type not found") {
+    statusCode = 404;
+    message = err.message;
+  } else if (err.message === "Inavlid ID") {
+    statusCode = 400;
+    message = err.message;
+  }
 
-//   res.status(statusCode).json({ error: true, message, statusCode });
-// });
+  res.status(statusCode).json({ error: true, message, statusCode });
+});
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

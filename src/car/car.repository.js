@@ -9,7 +9,7 @@ const findCarById = async (id) => {
     const car = await prisma.car.findUnique({
         where: {
             id,
-        }  
+        }
     })
     return car;
 }
@@ -29,7 +29,7 @@ const findCarByName = async (name) => {
     const car = await prisma.car.findMany({
         where: {
             name: {
-                startsWith: name,
+                contains: name,
             }
         }
     });
