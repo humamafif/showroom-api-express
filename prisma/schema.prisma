@@ -47,4 +47,5 @@ model Users {
   id       Int    @id @default(autoincrement())
   username String
   password String
+  status   String
 }
