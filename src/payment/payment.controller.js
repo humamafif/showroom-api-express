@@ -10,7 +10,7 @@ router.get('/', asyncHandler(async (req, res) => {
     res.status(200).json({ data: payments });
 }));
 
-router.get('/:id', asyncHandler(async (req, res) => {
+router.get('/:id', asyncHandler(async (req, res) => {c
     const paymentId = parseInt(req.params.id);
     const payment = await getPaymentById(paymentId);
     res.status(200).json({ data: payment });
