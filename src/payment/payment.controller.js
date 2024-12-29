@@ -6,11 +6,12 @@ const { getAllPayments, getPaymentById, getPaymentByType } = require('./payment.
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
+    
     const payments = await getAllPayments();
     res.status(200).json({ data: payments });
 }));
 
-router.get('/:id', asyncHandler(async (req, res) => {c
+router.get('/:id', asyncHandler(async (req, res) => {
     const paymentId = parseInt(req.params.id);
     const payment = await getPaymentById(paymentId);
     res.status(200).json({ data: payment });
